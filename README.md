@@ -1,2 +1,2 @@
-Introduction to the program
-Basic functions and first tests
+1. Introduction to the program
+2. Basic functions and first tests
