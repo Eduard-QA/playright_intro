@@ -1,0 +1,4 @@
+
+// Expect a title "to contain" a substring.
+    await expect(page).toHaveTitle(/Playwright/);   ==> ожидает страницу заголовок которой содержит Playwright
+	/ текст / ==> означает что это лишь часть текста (не полное совпадение)
