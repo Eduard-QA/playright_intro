@@ -8,19 +8,18 @@ test.describe('first test', () => {
 
         expect(title).toEqual('DEMOQA');
     })
-}),
+    test('fill out the text box', async ({ page }) => {
+        await page.goto('https://demoqa.com');
 
-test.describe('first test', () => {
-        test('fill out the text box', async ({ page }) => {
-            await page.goto('https://demoqa.com');
-
-            await page.locator('.card-body>h5').first().click();
-            await page.locator('ul.menu-list>li>span:text-is("Text Box")').click();
-            await page.locator('#userName').fill('Maria');
-           
-        })
+        await page.locator('.card-body>h5').first().click();
+        await page.locator('ul.menu-list>li>span:text-is("Text Box")').click();
+        await page.locator('#userName').fill('Maria');
+       
+    })
 
 }),
+
+
 
 test('has title', async ({ page }) => {
     await page.goto('https://playwright.dev/');
