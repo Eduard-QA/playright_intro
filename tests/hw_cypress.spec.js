@@ -7,12 +7,31 @@ test.describe('hw_cypress_test', () => {
 
 test('destroy_button', async ({ page }) => {
     
-await page.locator('text="Walk the dog"').click();
-let destroy_button = "body > section:nth-child(2) > div:nth-child(1) > section:nth-child(2) > ul:nth-child(3) > li:nth-child(2) > div:nth-child(1) > button:nth-child(3)";
-await page.locator(destroy_button).click();
+await page.locator('text="Walk the dog"').hover();
+      await page.locator('button.destroy.todo-button').last().click();
 
-await expect(page.locator('text="Walk the dog"').isVisible()).resolves.toBe(false);
+      await expect(page.getByText('Walk the dog')).not.toBeVisible();
+  });
+
+  test('add_task', async ({ page }) => {
+
+    await page.getByPlaceholder("What needs to be done?").click();
+    await page.keyboard.type('walk the rabbit');
+    await page.keyboard.press('Enter');
+  
+  await expect(page.getByText('walk the rabbit')).toBeVisible();
+
+  });
+
+  test('edit_task', async({page}) =>{
+
+    await page.locator('text="Walk the dog"').click({ clickCount: 3 }); // выделить весь текст в поле
+    await page.keyboard.press('Delete');
+    await page.keyboard.type('walk the cat');
+    await page.keyboard.press('Enter');
+
+    await expect(page.getByText('walk the cat')).toBeVisible();
     
-  })
+  });
 
 });
