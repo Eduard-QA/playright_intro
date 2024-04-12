@@ -11,7 +11,8 @@ test('destroy_button', async ({ page }) => {
   let destroy_button = "//label[text()='Pay electric bill']/following-sibling::button[contains(@class, 'destroy todo-button')]";
   await page.locator(destroy_button).click();
   
-  await expect(page.locator('text="Pay electric bill"').isVisible()).resolves.toBe(false);
+  await expect(page.locator('text="Pay electric bill"')).not.toBeVisible();
+  
   });
 
   test('add_task', async ({ page }) => {
