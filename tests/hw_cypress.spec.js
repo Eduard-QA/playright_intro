@@ -7,10 +7,11 @@ test.describe('hw_cypress_test', () => {
 
 test('destroy_button', async ({ page }) => {
     
-await page.locator('text="Walk the dog"').hover();
-      await page.locator('button.destroy.todo-button').last().click();
-
-      await expect(page.getByText('Walk the dog')).not.toBeVisible();
+  await page.locator('text="Pay electric bill"').click();
+  let destroy_button = "//label[text()='Pay electric bill']/following-sibling::button[contains(@class, 'destroy todo-button')]";
+  await page.locator(destroy_button).click();
+  
+  await expect(page.locator('text="Pay electric bill"').isVisible()).resolves.toBe(false);
   });
 
   test('add_task', async ({ page }) => {
